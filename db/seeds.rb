@@ -1,9 +1,3 @@
-dogs_and_breeds = [
-  ['Byron', 'poodle'],
-  ['The Shithead', 'Annoying Fucking Mutt'],
-  ['Jordan', "Shiba Inu"]]
-
-dogs_and_breeds.each do |name, breed|
-  puts "Adding #{name}"
-  Dog.create breed: breed, name:name
-end
+# 10.times do
+  User.create(email: Faker::Internet.email, password_digest: Faker::Internet.password, first_name: Faker::Name.first_name, last_name: Faker::Name.last_name)
+# end
