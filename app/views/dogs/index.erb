@@ -1,0 +1,20 @@
+<ul id="dog-list">
+  <% @dogs.each do |dog|  %>
+    <%= erb :'dogs/_dog', locals: {dog: dog} %>
+  <% end %>
+</ul>
+
+<a href="/dogs/new" id="add-dog">Add a Dog</a>
+
+<div id="dog-form" style="display:none">
+  <h1>Make a Dog</h1>
+
+  <form  id="new-dog" action="/dogs" method="POST" >
+    <label for="">Name</label><br/>
+    <input type="text" name="dog[name]" id="" value="" /><br/>
+    <label for="">Breed</label><br/>
+    <input type="text" name="dog[breed]" id="" value="" /><br/>
+    <input type="submit" name="" id="" value="Make a dawg" />
+  </form>
+</div>
+<script src="/js/application.js"></script>
