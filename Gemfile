@@ -1,5 +1,4 @@
 source 'https://rubygems.org'
-ruby '2.1.0'
 
 # PostgreSQL driver
 gem 'pg'
@@ -24,5 +23,8 @@ end
 
 group :test, :development do
   gem 'factory_girl'
-  gem 'faker'
 end
+
+gem 'bcrypt'
+gem 'pry'
+gem 'faker'
