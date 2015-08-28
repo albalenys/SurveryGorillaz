@@ -4,8 +4,8 @@ class User < ActiveRecord::Base
   has_many :surveys
   has_many :question_responses
 
-  validates_presence_of :password_digest, :email
-  validates_uniqueness_of :email
+  validates_the_presence_of :password_digest, :email
+  validates_the_uniqueness_of :email
 
   # add kelly's cool email validation
 end

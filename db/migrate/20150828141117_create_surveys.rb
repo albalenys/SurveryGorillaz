@@ -4,7 +4,7 @@ class CreateSurveys < ActiveRecord::Migration
       t.string :title, null: false, limit: 100
       t.belongs_to :user, null: false
 
-      t.timestamps(null: false)
+      t.timestamps (null: false)
     end
   end
 end
