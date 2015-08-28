@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <!-- 
+  <!--
     normalize.css removes cross-browser differences in defaults, e.g.,
     differences in how form elements appear between Firefox and IE
     See: http://necolas.github.com/normalize.css/
@@ -16,7 +16,28 @@
 
   <title></title>
 </head>
+
 <body>
+  <header class="header">
+    <ul class="float-left">
+      <li><a href="/surveys/new">Survey Gorillaz</a></li>
+      <li><a href="/surveys">Take a survey</a></li>
+    </ul>
+    <ul class="float-right">
+      <% if logged_in? %>
+        <li><a href="/users/<%= current_user.id %>"><%= current_user.first_name %></a></li>
+        <li><%= erb :"/users/_delete", locals: { user: current_user } %></li>
+      <% else %>
+        <li><a href="/users/new">Login</a></li>
+        <li><a href="/users/new">Signup</a></li>
+      <% end %>
+    </ul>
+  </header>
   <%= yield %>
+
 </body>
+
+<script src="/js/application.js"></script>
 </html>
+
+
