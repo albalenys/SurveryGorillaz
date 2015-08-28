@@ -1,4 +1,4 @@
 <h1>Create New Survey</h1>
 <form action="/surveys" method="POST">
-  <%= erb :_form %>
+  <%= erb :"/surveys/_form", locals: { survey: @survey } %>
 </form>

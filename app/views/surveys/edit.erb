@@ -1,4 +1,4 @@
 <h1>Edit Survey</h1>
 <form action="/surveys/:id" method="PUT">
-  <%= erb :_form %>
+  <%= erb :"/surveys/_form", locals: { survey: @survey } %>
 </form>
