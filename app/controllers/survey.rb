@@ -66,4 +66,13 @@ put '/surveys/:id' do
   # we need to do this
 end
 
+post '/surveys/:id/submit' do
+  survey = Survey.find_by(id: params[:survey_id])
+  survey.questions.each do |question|
+    QuestionResponse.create(question_id: question.id, choice_id: params[:"#{question.id}"][:choice_id], user_id: session[:user_id], survey_id: params[:survey_id])
+  end
+  redirect "/"
+  #change to redirect to thanks page once created
+end
+
 
