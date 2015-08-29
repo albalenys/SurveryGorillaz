@@ -21,19 +21,19 @@
 <body>
   <header class="header">
     <ul class="float-left">
-      <li><a class="site-title" href="/surveys">Survey Gorillaz</a></li>
+      <li><a id="site-title" class="header-link" href="/surveys">Survey Gorillaz</a></li>
     </ul>
     <ul class="float-right">
-      <li><a href="/surveys/new">Create A Survey</a></li>
+      <li><a class="header-link" href="/surveys/new">Create A Survey</a></li>
       <li>|</li>
       <% if logged_in? %>
-        <li><a href="/users/<%= current_user.id %>">Hello, <%= current_user.first_name %></a></li>
+        <li><a class="header-link" href="/users/<%= current_user.id %>">Profile</a></li>
         <li>|</li>
         <li><%= erb :"/users/_delete", locals: { user: current_user } %></li>
       <% else %>
         <li><a href="/users/login">Login</a></li>
         <li>|</li>
-        <li><a href="/users/new">Signup</a></li>
+        <li><a class="header-link" href="/users/new">Signup</a></li>
       <% end %>
     </ul>
   </header>

@@ -1,18 +1,15 @@
-$("#add-dog").on('click', function(e) {
+$(".header-link").on('click', function(e) {
   e.preventDefault();
-  $("#dog-form").show();
-});
+  var $target = $(this)
+  var url = $target.attr('href')
 
-$("#new-dog").on('submit', function(e) {
-  e.preventDefault();
-
-  $.ajax('/dogs', {
-    data: $(this).serialize(),
-    method: 'POST'
-  }).done(function(data) {
-    $("#dog-list").append(data);
-    $("#dog-form").hide();
+  $.ajax(url).done(function(data) {
+    $(".content").hide();
+    var insert_this = $(data).wrap("<section>").addClass("content")
+    $("body").append(insert_this.parent()); // dude. so weird.
   }).fail(function() {
-    alert("i died...sad...so sad");
+    alert("I failed, I'm sorry.");
   });
 });
+
+
