@@ -1,9 +1,14 @@
 <h1>Sign Up</h1>
 <form action="/users" method="POST">
-  <label for="first_name">First Name:</label>
-  <input type="text" name="user[first_name]"><br>
-
-  <label for="last_name">Last Name:</label>
-  <input type="text" name="user[last_name]"><br>
-  <%= erb :"users/_form" %>
+  <table>
+    <tr>
+      <td><label for="first_name">First Name:</label></td>
+      <td><input type="text" name="user[first_name]"></td>
+    </tr>
+    <tr>
+      <td><label for="last_name">Last Name:</label></td>
+      <td><input type="text" name="user[last_name]"></td>
+    </tr>
+    <%= erb :"users/_form" %>
+  </table>
 </form>
