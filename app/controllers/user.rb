@@ -5,14 +5,11 @@ end
 post '/users' do
   user = User.new(params[:user])
   if user.save
+    session[:user] = user
     redirect '/'
   else
     error
   end
-end
-
-get '/users/login' do
-  erb :"/users/login"
 end
 
 post '/users/login' do
@@ -23,4 +20,9 @@ post '/users/login' do
   else
     error
   end
+end
+
+get '/users/:id' do
+  @user = User.find_by(id: params[:id])
+  erb :"/users/profile"
 end
