@@ -88,3 +88,7 @@ td {
 fieldset {
   border: none;
 }
+.center {
+  margin: auto;
+  text-align: center;
+}
