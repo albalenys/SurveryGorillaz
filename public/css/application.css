@@ -20,7 +20,7 @@ a {
   text-decoration: none;
   color: white;
 }
-.site-title:hover {
+#site-title:hover {
   text-shadow: 2px 2px 5px black;
 }
 .header ul {
