@@ -18,9 +18,14 @@ end
 post '/users/login' do
   user = User.find_by(email: params[:user][:email])
   if user && user.authenticate(params[:user][:password])
-    session[:user] = user
+    session[:user_id] = user
     redirect '/'
   else
     error
   end
+end
+
+delete '/users/:id' do
+  session.clear
+  redirect '/'
 end
