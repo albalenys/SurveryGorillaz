@@ -17,33 +17,41 @@ get '/surveys' do
   erb :"/surveys/index"
 end
 
-# delete '/surveys/:id' do
-#   p params.to_s
-# end
+get '/surveys/:id/questions/new' do
+  @survey = Survey.find_by(id: params[:id])
+  @question = Question.new
+  erb :'/questions/new'
+end
 
-# post '/surveys' do
-#   p params.to_s
-# end
+post '/surveys/:id/questions' do
+  survey = Survey.find_by(id: params[:id])
+  question = survey.questions.create(content: params[:users][:question])
+  question.choices.create(content: params[:users][:response1])
+  question.choices.create(content: params[:users][:response2])
+  question.choices.create(content: params[:users][:response3])
+  question.choices.create(content: params[:users][:response4])
+  binding.pry
 
-# put '/surveys/:id' do
-#   p params.to_s
-# end
-
+  redirect "/surveys/#{survey.id}/questions/new"
+end
 
 post '/surveys' do
-  binding.pry
   survey = Survey.new(title: params[:survey][:title], user_id: session[:user][:id])
   if survey.save
-    binding.pry
     redirect "/surveys/#{survey.id}/questions/new"
   else
     erb :"/surveys/new"
   end
 end
 
-get 'surveys/:id/questions/new' do
-  @survey = Survey.find_by(id: params[:id])
-  @question = Question.new
-  binding.pry
-  erb :"/questions/new"
+delete '/surveys/:id' do
+  p params.to_s
+end
+
+post '/surveys' do
+  p params.to_s
+end
+
+put '/surveys/:id' do
+  p params.to_s
 end
