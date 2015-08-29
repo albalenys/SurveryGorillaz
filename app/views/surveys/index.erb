@@ -2,12 +2,14 @@
 
 <h1>List of Surveys</h1>
 
-<table>
+<table class="surveys-table">
   <% @surveys.each do |survey| %>
     <tr>
       <td><a href="/surveys/<%= survey.id %>"><%= survey.title %></a></td>
-      <td><a href="/surveys/<%= survey.id %>/edit">Edit Button</a></td>
-      <td> <%= erb :'/surveys/_delete', locals: { survey: survey } %> </td>
+      <% if survey.user == current_user %>
+        <td><a href="/surveys/<%= survey.id %>/edit">Edit Button</a></td>
+        <td><%= erb :'/surveys/_delete', locals: { survey: survey } %></td>
+      <% end %>
     </tr>
   <% end %>
 </table>
