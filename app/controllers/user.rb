@@ -25,21 +25,22 @@ end
 
 post '/users/login' do
   user = User.find_by(email: params[:user][:email])
-  if user && user.authenticate(params[:user][:password])
-    session[:user_id] = user
+  if user # && user.authenticate(params[:user][:password])
+    session[:user_id] = user.id
     redirect '/'
   else
-    error
+    flash[:error] = "Your email or password was incorrect"
+    redirect '/users/login'
   end
 end
 
 post '/users' do
   user = User.new(params[:user])
   if user.save
-    session[:user] = user
+    session[:user_id] = user.id
     redirect '/'
   else
-    error
+    p "error"
   end
 end
 
