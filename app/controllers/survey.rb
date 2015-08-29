@@ -5,7 +5,11 @@ end
 
 get '/surveys/new' do
   @survey = Survey.new
-  erb :"/surveys/new"
+  if request.xhr?
+    erb :"/surveys/new", layout: false
+  else
+    erb :"/surveys/new"
+  end
 end
 
 get '/surveys/:id' do

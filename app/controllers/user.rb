@@ -1,5 +1,9 @@
 get '/users/new' do
-  erb :"/users/signup"
+  if request.xhr?
+    erb :"/users/signup", layout: false
+  else
+    erb :"/users/signup"
+  end
 end
 
 post '/users' do
@@ -29,5 +33,9 @@ end
 
 get '/users/:id' do
   @user = User.find_by(id: params[:id])
-  erb :"/users/profile"
+  if request.xhr?
+    erb :"/users/profile", layout: false
+  else
+    erb :"/users/profile"
+  end
 end

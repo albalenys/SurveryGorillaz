@@ -1,12 +1,15 @@
-$(".site-title").on('click', function(e) {
+$(".header-link").on('click', function(e) {
   e.preventDefault();
   var $target = $(this)
   var url = $target.attr('href')
 
   $.ajax(url).done(function(data) {
     $(".content").hide();
-    $("body").append($(data).wrap("<section>").addClass("content").parent());
+    var insert_this = $(data).wrap("<section>").addClass("content")
+    $("body").append(insert_this.parent()); // dude. so weird.
   }).fail(function() {
     alert("I failed, I'm sorry.");
   });
 });
+
+
