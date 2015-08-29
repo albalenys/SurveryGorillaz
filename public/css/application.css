@@ -63,4 +63,14 @@ a {
   padding: 0;
   display: inline;
 }
+.profile_icon {
+  width: 6em;
+  height: 6em;
+}
+.profile_tb {
+  margin: auto;
+}
+.profile_tb td {
+  padding: 2em;
+}
 
