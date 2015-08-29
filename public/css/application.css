@@ -77,4 +77,10 @@ a {
 td {
   padding: 10px 10px 10px 0px;
 }
-
+.survey_title {
+  font-weight: bold;
+  font-size: 2em;
+  margin: 0;
+}
+fieldset {
+  border: none;

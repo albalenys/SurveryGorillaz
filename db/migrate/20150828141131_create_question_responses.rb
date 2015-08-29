@@ -4,7 +4,7 @@ class CreateQuestionResponses < ActiveRecord::Migration
       t.belongs_to :choice, null: false
       t.belongs_to :question, null: false
       t.belongs_to :survey, null: false
-      t.belongs_to :user, null: false
+      t.belongs_to :user
 
       t.timestamps(null: false)
     end
