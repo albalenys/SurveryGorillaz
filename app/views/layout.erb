@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <!-- 
+  <!--
     normalize.css removes cross-browser differences in defaults, e.g.,
     differences in how form elements appear between Firefox and IE
     See: http://necolas.github.com/normalize.css/
@@ -11,12 +11,40 @@
     application.css is where you put your styles
   -->
   <link rel="stylesheet" href="/css/application.css">
+  <link href='https://fonts.googleapis.com/css?family=Rock+Salt|Anonymous+Pro' rel='stylesheet' type='text/css'>
 
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
 
   <title></title>
 </head>
+
 <body>
-  <%= yield %>
+  <header class="header">
+    <ul class="float-left">
+      <li><a class="site-title" href="/surveys">Survey Gorillaz</a></li>
+    </ul>
+    <ul class="float-right">
+      <li><a href="/surveys/new">Create A Survey</a></li>
+      <li>|</li>
+      <% if logged_in? %>
+        <li><a href="/users/<%= current_user.id %>">Hello, <%= current_user.first_name %></a></li>
+        <li>|</li>
+        <li><%= erb :"/users/_delete", locals: { user: current_user } %></li>
+      <% else %>
+        <li><a href="/users/login">Login</a></li>
+        <li>|</li>
+        <li><a href="/users/new">Signup</a></li>
+      <% end %>
+    </ul>
+  </header>
+
+  <section class="content">
+    <%= yield %>
+  </section>
+
 </body>
+
+<script src="/js/application.js"></script>
 </html>
+
+

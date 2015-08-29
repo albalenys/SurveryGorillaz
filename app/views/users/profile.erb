@@ -1,0 +1,17 @@
+<h1>User Profile</h1>
+
+<table class="profile_tb">
+  <td>
+    <% if @user.img_src %>
+      <img class="profile_icon" src="<%= @user.img_src %>">
+    <% else %>
+      <img class="profile_icon" src="https://cdn1.iconfinder.com/data/icons/ninja-things-1/1772/ninja-simple-512.png"?>
+    <% end %>
+  </td>
+  <td>
+    <strong>First Name:</strong> <%= @user.first_name %><br>
+    <strong>Last Name:</strong>  <%= @user.last_name %><br>
+    <strong>Email:</strong>  <%= @user.email %><br>
+    <strong>Stats:</strong>
+  </td>
+</table>
