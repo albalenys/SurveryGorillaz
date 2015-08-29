@@ -48,8 +48,7 @@ post '/surveys/:id/questions' do
 end
 
 post '/surveys' do
-
-  survey = Survey.new(title: params[:survey][:title], user_id: session[:user][:id])
+  survey = Survey.new(title: params[:survey][:title], user_id: session[:user_id])
   if survey.save
     redirect "/surveys/#{survey.id}/questions/new"
   else
