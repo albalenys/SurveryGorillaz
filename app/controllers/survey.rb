@@ -9,6 +9,7 @@ get '/surveys/new' do
 end
 
 get '/surveys/:id' do
+  @survey = Survey.find_by(id: params[:id])
   erb :"/surveys/show"
 end
 
@@ -25,15 +26,21 @@ end
 
 post '/surveys/:id/questions' do
   survey = Survey.find_by(id: params[:id])
-  question = survey.questions.create(content: params[:users][:question])
-  question.choices.create(content: params[:users][:response1])
-  question.choices.create(content: params[:users][:response2])
-  question.choices.create(content: params[:users][:response3])
-  question.choices.create(content: params[:users][:response4])
-  redirect "/surveys/#{survey.id}/questions/new"
+  question = survey.questions.new(content: params[:question])
+  choice1 = question.choices.new(content: params[:response1])
+  choice2 = question.choices.new(content: params[:response2])
+  choice3 = question.choices.new(content: params[:response3])
+  choice4 = question.choices.new(content: params[:response4])
+  if (question.save && choice1.save && choice2.save && choice3.save && choice4.save)
+    redirect "/surveys/#{survey.id}/questions/new"
+  else
+    flash[:error] = @question.errors.full_messages.to_sentence
+    redirect "/surveys/#{survey.id}/questions/new"
+  end
 end
 
 post '/surveys' do
+
   survey = Survey.new(title: params[:survey][:title], user_id: session[:user][:id])
   if survey.save
     redirect "/surveys/#{survey.id}/questions/new"
@@ -44,10 +51,12 @@ end
 
 delete '/surveys/:id' do
   p params.to_s
+  # we need to do this
 end
 
 put '/surveys/:id' do
   p params.to_s
+  # we need to do this
 end
 
 
