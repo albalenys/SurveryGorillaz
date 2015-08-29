@@ -27,7 +27,7 @@
       <li><a href="/surveys/new">Create A Survey</a></li>
       <li>|</li>
       <% if logged_in? %>
-        <li><a href="/users/<%= current_user.id %>"><%= current_user.first_name %></a></li>
+        <li><a href="/users/<%= current_user.id %>">Hello, <%= current_user.first_name %></a></li>
         <li>|</li>
         <li><%= erb :"/users/_delete", locals: { user: current_user } %></li>
       <% else %>

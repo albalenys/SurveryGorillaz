@@ -1,6 +1,6 @@
 <!-- needs a @user object -->
-
-<form action="/users/<%= user.id %>" method="POST">
+<form class="logout-form" action="/users/<%= current_user.id %>" method="POST">
   <input type="hidden" name="_method" value="DELETE" />
-  <input type="submit" value="Logout">
+  <input class="logout-button" type="submit" value="Logout">
 </form>
+

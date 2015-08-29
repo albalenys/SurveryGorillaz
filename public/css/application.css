@@ -40,14 +40,28 @@ a {
   float: left;
 }
 .float-right {
-  width:400px;
+  width:470px;
   float: right;
+  text-align: right;
+  padding-right: 30px;
 }
 .content {
   margin-top: 50px;
   margin-left: 5%;
   margin-right: 5%;
   margin-bottom: 50px;
+}
+.logout-button {
+  background:none;
+  border:none;
+  padding:0;
+  cursor: pointer;
+  display: inline;
+}
+.logout-form {
+  margin: 0;
+  padding: 0;
+  display: inline;
 }
 .profile_icon {
   width: 6em;
@@ -59,3 +73,4 @@ a {
 .profile_tb td {
   padding: 2em;
 }
+
