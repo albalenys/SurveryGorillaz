@@ -64,8 +64,9 @@ a {
   display: inline;
 }
 .profile_icon {
-  width: 6em;
-  height: 6em;
+  width: 7em;
+  height: 7em;
+  border: 1px solid #000;
 }
 .profile_tb {
   margin: auto;
