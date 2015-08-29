@@ -74,4 +74,7 @@ a {
 .profile_tb td {
   padding: 2em;
 }
+td {
+  padding: 10px 10px 10px 0px;
+}
 
