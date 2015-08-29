@@ -2,7 +2,7 @@
   <h1>Please create a new question for your <%=@survey.title%></h1>
   <form action="/surveys/<%=@survey.id%>/questions" method="POST">
     <div>
-       <textarea rows="10" cols="40" name="question" placeholder="Write your question here"></textarea>
+       <textarea rows="4" cols="40" name="question" placeholder="Write your question here"></textarea>
     </div>
       <hr>
       <textarea rows="4" cols="40" name="response1" placeholder="Response"></textarea>

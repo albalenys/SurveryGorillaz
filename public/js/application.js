@@ -1,3 +1,17 @@
+$(".delete-form").on("submit", function (e) {
+  e.preventDefault();
+  if (confirm("Are you sure? This action is not reversible.")){
+    url = $(this).attr('action');
+    row = $(this).parent().parent();
+    $.ajax({url: url, type: 'DELETE'}).done(function(data) {
+      row.remove();
+    })
+    .fail(function() {
+      alert("failed to delete");
+    });
+  };
+});
+
 $(".header-link").on('click', function(e) {
   e.preventDefault();
   var $target = $(this)
@@ -12,5 +26,3 @@ $(".header-link").on('click', function(e) {
     alert("I failed, I'm sorry.");
   });
 });
-
-

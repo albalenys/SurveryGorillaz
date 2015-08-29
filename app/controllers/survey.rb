@@ -58,7 +58,9 @@ end
 
 delete '/surveys/:id' do
   Survey.find_by(id: params[:id]).destroy
-  redirect "/surveys"
+  if !request.xhr?
+    redirect "/surveys"
+  end
 end
 
 put '/surveys/:id' do

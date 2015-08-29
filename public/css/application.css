@@ -77,6 +77,9 @@ a {
 td {
   padding: 10px 10px 10px 0px;
 }
+.surveys-table td {
+  padding-right: 50px;
+}
 .survey_title {
   font-weight: bold;
   font-size: 2em;
@@ -84,3 +87,4 @@ td {
 }
 fieldset {
   border: none;
+}
