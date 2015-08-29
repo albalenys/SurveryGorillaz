@@ -1,3 +1,11 @@
+<% if current_user.id == @user.id %>
+  <p class="center">
+    <a href="/users/<%= current_user.id %>/edit">Edit Account</a><br>
+    <a href="#">Delete Account</a>
+  </p>
+<% end %>
+<hr width="50%">
+
 <table class="profile_tb">
   <td>
     <% if @user.img_src == "" %>
