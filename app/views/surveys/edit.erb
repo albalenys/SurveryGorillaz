@@ -2,3 +2,19 @@
 <form action="/surveys/:id" method="PUT">
   <%= erb :"/surveys/_form", locals: { survey: @survey } %>
 </form>
+
+put '/surveys/:id' do
+  survey = Survey.find_by(id: params[:id])
+  survey(params)
+  if survey.save?
+    redirect "/surveys/:id/questions/new"
+  else
+    erb :"/surveys/new"
+  end
+end
+
+get 'surveys/:id/questions/new' do
+  @survey = Survey.find_by(id: params[:id])
+  @question = Question.new
+  erb :"/surveys/question"
+end

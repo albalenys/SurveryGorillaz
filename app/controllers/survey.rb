@@ -17,14 +17,33 @@ get '/surveys' do
   erb :"/surveys/index"
 end
 
-delete '/surveys/:id' do
-  p params.to_s
-end
+# delete '/surveys/:id' do
+#   p params.to_s
+# end
+
+# post '/surveys' do
+#   p params.to_s
+# end
+
+# put '/surveys/:id' do
+#   p params.to_s
+# end
+
 
 post '/surveys' do
-  p params.to_s
+  survey = Survey.new(title: params[:survey][:title])
+  # we need to add a user to survey here
+  if survey.save
+    binding.pry
+    redirect "/surveys/#{survey.id}/questions/new"
+  else
+    erb :"/surveys/new"
+  end
 end
 
-put '/surveys/:id' do
-  p params.to_s
+get 'surveys/:id/questions/new' do
+  @survey = Survey.find_by(id: params[:id])
+  @question = Question.new
+  binding.pry
+  erb :"/questions/new"
 end
