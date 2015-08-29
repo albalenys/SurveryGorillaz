@@ -14,7 +14,11 @@ end
 
 get '/surveys' do
   @surveys = Survey.all
-  erb :"/surveys/index"
+  if request.xhr?
+    erb :"/surveys/index", layout: false
+  else
+    erb :"/surveys/index"
+  end
 end
 
 delete '/surveys/:id' do
