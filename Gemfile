@@ -28,3 +28,5 @@ end
 gem 'bcrypt'
 gem 'pry'
 gem 'faker'
+gem 'sinatra-flash'
+gem 'sinatra-redirect-with-flash'
