@@ -1,5 +1,5 @@
 <div class="container">
-  <h1>Please create a new question for your survey</h1>
+  <h1>Please create a new question for your <%=@survey.title%></h1>
   <form action="/surveys/<%=@survey.id%>/questions" method="POST">
     <div>
        <textarea rows="10" cols="40" name="users[question]" placeholder="Write your question here"></textarea>
@@ -17,5 +17,8 @@
       <input type="submit" value="Submit">
     </div>
   </form>
-  <a href="/surveys">Save Survey</a>
+  <form action="/surveys" method="get">
+    <input type="submit" value="Save Survey">
+  </form>
 </div>
+
