@@ -1,4 +1,7 @@
 <h1>Edit Survey</h1>
 <form action="/surveys/:id" method="PUT">
-  <%= erb :"/surveys/_form", locals: { survey: @survey } %>
+  <table>
+    <%= erb :"/surveys/_form", locals: { survey: @survey } %>
+    <tr><td><input type="submit" value="Submit"></input></td></tr>
+  </table>
 </form>
