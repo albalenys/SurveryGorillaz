@@ -31,8 +31,8 @@ end
 
 
 post '/surveys' do
-  survey = Survey.new(title: params[:survey][:title])
-  # we need to add a user to survey here
+  binding.pry
+  survey = Survey.new(title: params[:survey][:title], user_id: session[:user][:id])
   if survey.save
     binding.pry
     redirect "/surveys/#{survey.id}/questions/new"
