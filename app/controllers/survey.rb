@@ -57,8 +57,8 @@ post '/surveys' do
 end
 
 delete '/surveys/:id' do
-  p params.to_s
-  # we need to do this
+  Survey.find_by(id: params[:id]).destroy
+  redirect "/surveys"
 end
 
 put '/surveys/:id' do
