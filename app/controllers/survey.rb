@@ -48,6 +48,7 @@ post '/surveys/:id/questions' do
 end
 
 post '/surveys' do
+  redirect_home_unless_logged_in
   if request.xhr?
     @question_index = 0
     params[:data].each_with_index do |obj, i|
