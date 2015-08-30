@@ -92,3 +92,7 @@ fieldset {
   margin: auto;
   text-align: center;
 }
+.choice-input {
+  margin-left: 15px;
+}
+
