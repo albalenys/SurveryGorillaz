@@ -92,3 +92,6 @@ fieldset {
   margin: auto;
   text-align: center;
 }
+hr {
+  width: 50%;
+}

@@ -1,9 +1,12 @@
 <h1 class="center"><%= @user.first_name%>'s Profile</h1>
-<% if current_user.id == @user.id %>
+<% if flash[:error] %>
+  <p class="center" class="error-message"><%= flash[:error] %></p>
+<% end %>
+<% if session[:user_id] == @user.id %>
   <p class="center">
-    <a href="/users/<%= current_user.id %>/edit">Edit Account</a><br>
+    <a href="/users/<%= session[:user_id] %>/edit">Edit Account</a><br>
   </p>
-  <hr width="50%">
+  <hr>
 <% end %>
 
 <table class="profile_tb">
@@ -15,23 +18,18 @@
     <% end %>
   </td>
   <td>
-    <% if @user.first_name != "" %>
-      First Name: <%= @user.first_name %><br>
+    Name: <%= @user.first_name %> <%= @user.last_name %><br>
+    <% if @user.city && @user.city != "" %>
+      City: <%= @user.city %><br>
     <% end %>
-    <% if @user.last_name != "" %>
-      Last Name:  <%= @user.last_name %><br>
+    <% if @user.country && @user.country != "" %>
+      Country: <%= @user.country %><br>
     <% end %>
-    <% if @user.city != "" %>
-      City:  <%= @user.city %><br>
-    <% end %>
-    <% if @user.country != ""%>
-      Country:  <%= @user.country %><br>
-    <% end %>
-    Email:  <%= @user.email %><br>
+    Email: <%= @user.email %><br>
   </td>
 </table>
-<hr width="50%">
-<h3 class="center">Current Surveys</h3>
+<hr>
+<h3 class="center">Current Surveys</h3><br>
 <% if @user.surveys.empty? %>
   <p class="center">
     You currently don't have any surveys!<br>
