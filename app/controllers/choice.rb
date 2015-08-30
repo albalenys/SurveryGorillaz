@@ -8,5 +8,6 @@ get '/choices/new' do
 end
 
 post '/choices' do
+  puts "~" * 80
   p params.to_s
 end

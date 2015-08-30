@@ -1,10 +1,12 @@
 <h1>Create New Survey</h1>
 <form class="survey-form" action="/surveys" method="POST">
   <%= erb :"/surveys/_form" %>
+  <p><input  style="display: none;" type="submit" value="survey"></p>
 </form>
 
 <%= erb :"/surveys/_question" %>
 <p><a class="append-selection" href="/questions/new" class="form-button">Add Question</a></p>
-<p><a class="survey-form-submit-button" href="" class="form-button">Save Survey</a></p>
 
-
+<form class="submit-all" action="/surveys" method="POST">
+  <p><input type="submit" value="Save Survey"></p>
+</form>

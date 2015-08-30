@@ -43,6 +43,7 @@ end
 
 post '/surveys' do
   p params.to_s
+  puts "*" * 80
   # survey = Survey.new(title: params[:survey][:title], user_id: session[:user_id])
   # if survey.save
   #   redirect "/surveys/#{survey.id}/questions/new"

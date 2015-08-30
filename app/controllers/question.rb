@@ -8,5 +8,6 @@ get '/questions/new' do
 end
 
 post '/questions' do
+  puts "+" * 80
   p params.to_s
 end
