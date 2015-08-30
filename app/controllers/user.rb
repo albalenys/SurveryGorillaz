@@ -29,10 +29,10 @@ post '/users/login' do
     session[:user_id] = user.id
     redirect '/'
   elsif user
-    flash[:error] = "Your password was incorrect"
+    flash[:error] = "Your password was incorrect."
     redirect '/users/login'
   else
-    flash[:error] = "Your email or password was incorrect"
+    flash[:error] = "Your email or password was incorrect."
     redirect '/users/login'
   end
 end
@@ -43,7 +43,8 @@ post '/users' do
     session[:user_id] = user.id
     redirect '/'
   else
-    p "error"
+    flash[:sign_up_error] = user.errors.full_messages
+    redirect '/users/new'
   end
 end
 
@@ -53,21 +54,30 @@ delete '/users/:id' do
 end
 
 get '/users/:id/edit' do
-  erb :"users/edit"
-end
-
-put '/users/:id' do
-  current_user.update(img_src: params[:user][:img_src])
-  current_user.update(first_name: params[:user][:first_name])
-  current_user.update(last_name: params[:user][:last_name])
-  current_user.update(city: params[:user][:city])
-  current_user.update(country: params[:user][:country])
-  current_user.update(email: params[:user][:email])
-  current_user.update(password: params[:user][:password])
-  if current_user.save
-    redirect "/users/#{current_user.id}"
+  if session[:user] == params[:id]
+    erb :"users/edit"
   else
-    error
+    flash[:error] = "You are not authorized to edit this profile. Make sure you are logged into your account."
+    redirect "/users/#{params[:id]}"
   end
 end
 
+put '/users/:id' do
+  if session[:user] == params[:id]
+    current_user.update(img_src: params[:user][:img_src])
+    current_user.update(first_name: params[:user][:first_name])
+    current_user.update(last_name: params[:user][:last_name])
+    current_user.update(city: params[:user][:city])
+    current_user.update(country: params[:user][:country])
+    current_user.update(email: params[:user][:email])
+    current_user.update(password: params[:user][:password])
+    if current_user.save
+      redirect "/users/#{current_user.id}"
+    else
+      "Invalid input"
+    end
+  else
+    flash[:error] = "You are not authorized to edit this profile. Make sure you are logged into your account."
+    redirect "/users/#{params[:id]}"
+  end
+end

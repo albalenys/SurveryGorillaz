@@ -6,6 +6,5 @@ class User < ActiveRecord::Base
 
   validates_presence_of :password_digest, :email, :first_name
   validates_uniqueness_of :email
-
-  # add kelly's cool email validation
+  validates :email, email_format: { message: "This is an invalid email address." }
 end
