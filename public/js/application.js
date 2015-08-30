@@ -37,15 +37,41 @@ $(document).on('click', '.append-selection', function (e) {
   });
 });
 
-$(document).on('click', '.survey-form-submit-button', function (e) {
-  var survey = $(".survey-form")
-  var questions = $(".question-form")
-  // for each question
-    var choices = $(".choice-form")
-});
+// $(document).on('click', '.survey-form-submit-button', function (e) {
+//   //$(".survey-form")
+//   debugger
+//   $(".question-form").each(function(i, question) {
+// debugger // check arguments - question.siblings('.choice-form');
+//     //var that = $(this);
+//     //$.post(that.attr('action'), that.serialize());
+//   });
+// });
 
+// //callback handler for form submit
+// $(".survey-form").submit(function(e)
+// {
+//     var postData = $(this).serializeArray();
+//     var formURL = $(this).attr("action");
+//     $.ajax(
+//     {
+//         url : formURL,
+//         type: "POST",
+//         data : postData,
+//         success:function(data, textStatus, jqXHR)
+//         {
+//             //data: return data from server
+//         },
+//         error: function(jqXHR, textStatus, errorThrown)
+//         {
+//             //if fails
+//         }
+//     });
+//     e.preventDefault(); //STOP default action
+//     e.unbind(); //unbind. to stop multiple form submit.
+// });
 
+// $(".survey-form").submit();
 
-
+// helpful - http://itquestionz.com/questions/2543751/ajax-submit-multiple-forms-via-jquery
 
 
