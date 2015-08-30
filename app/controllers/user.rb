@@ -81,4 +81,3 @@ put '/users/:id' do
     redirect "/users/#{params[:id]}"
   end
 end
-
