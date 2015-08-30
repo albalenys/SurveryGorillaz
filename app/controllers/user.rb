@@ -43,7 +43,7 @@ post '/users' do
     session[:user_id] = user.id
     redirect '/'
   else
-    p "error"
+    "error"
   end
 end
 

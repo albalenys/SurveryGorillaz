@@ -8,8 +8,8 @@
 
 <table class="profile_tb">
   <td>
-    <% if @user.img_src == "" %>
-      <img class="profile_icon" src="https://cdn1.iconfinder.com/data/icons/ninja-things-1/1772/ninja-simple-512.png"?>
+    <% if @user.img_src == "" || @user.img_src == nil %>
+      <img class="profile_icon" src="https://cdn1.iconfinder.com/data/icons/ninja-things-1/1772/ninja-simple-512.png">
     <% else %>
       <img class="profile_icon" src="<%= @user.img_src %>">
     <% end %>
