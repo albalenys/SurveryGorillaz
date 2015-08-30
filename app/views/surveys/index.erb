@@ -1,4 +1,7 @@
 <!-- needs a @surveys object -->
+<% if flash[:not_logged_in] %>
+<div class="error_container"><h2><%= flash[:not_logged_in] %></h2></div>
+<%end %>
 
 <h1>List of Surveys</h1>
 
