@@ -43,8 +43,22 @@ end
 
 post '/surveys' do
   if request.xhr?
-    puts "value"
-    p params[:data]["0"][:value]
+    @question_index = 0
+    params[:data].each_with_index do |obj, i|
+      @name = obj[1][:name]
+      @value = obj[1][:value]
+      if i == 0
+        @survey = Survey.new(title: @value, user_id: current_user.id)
+        @survey.save
+      elsif i > @question_index && @name == "question[content]"
+        @question = Question.new(content: @value, survey_id: @survey.id)
+        @question.save
+        @question_index = i
+      elsif i > @question_index && @name == "choice[content]"
+        @choice = Choice.new(content: @value, question_id: @question.id)
+        @choice.save
+      end
+    end
   else
     survey = Survey.new(title: params[:survey][:title], user_id: session[:user_id])
     if survey.save

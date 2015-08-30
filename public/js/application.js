@@ -50,43 +50,31 @@ $(document).on('click', '.append-question', function (e) {
   });
 });
 
-// function post(postObj, i) {
-//   return $.ajax({
-//     method: "POST",
-//     url: postObj.attr('action'),
-//     data: { data: postObj.serializeArray(), question: i }
-//   })
-//   .fail(function() {
-//     alert("failed to post");
-//   });
-// };
+$(document).on('submit', 'form.survey-form', function (e) {
+  e.preventDefault();
+  var survey = $(".survey-form");
+  postURL = survey.attr('action')
+  postData = survey.serializeArray();
 
-// $(document).on('submit', '.submit-all', function (e) {
-//   e.preventDefault();
+  $.ajax({
+    method: "POST",
+    url: postURL,
+    data: { data: postData }
+  })
+  .fail(function() {
+    alert("failed to post");
+  });
 
-//   var questionPromises = [];
-//   $(".question-form").each(function(i) {
-//     var question = $(this);
-//     var choices = question.siblings('.choice-form');
+  $.ajax('/surveys').done(function(data) {
+    $(".content").remove();
+    var content = $(data).wrapAll("<section>");
+    var section = content.parent().addClass("content");
+    $("body").append(section);
+  }).fail(function() {
+    alert("failed to retrieve data");
+  });
 
-//     var choicePromises = [];
-//     choices.each(function() {
-//       var choice = $(this);
-//       choicePromises.push(post(choice, i));
-//     }); 
-//     // resolve choice promises
-//     $.when.apply($, choicePromises);
-
-//     questionPromises.push(post(question, i));
-//   }); 
-//   // resolve question promises
-//   $.when.apply($, questionPromises);
-
-//   var surveyPromise = post($(".survey-form"));
-//   // resolve survey promise
-//   $.when.surveyPromise;
-
-// });
+});
 
 
 
