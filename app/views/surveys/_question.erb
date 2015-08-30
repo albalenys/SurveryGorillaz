@@ -1,9 +1,12 @@
-<form class="question-form" action="/questions" method="POST">
-  <p><input type= "text" name="question[content][]" placeholder= "question"></p>
-  <p><input style="display: none;" type="submit" value="question"></p>
-</form>
+<div class="question-container">
+	<p><input type= "text" name="question[]" placeholder= "question"></p>
 
-<%= erb :"/surveys/_choice" %>
-<%= erb :"/surveys/_choice" %>
-<p><a class="append-selection" class="choice-input" href="/choices/new">Add Choice</a></p>
+	<form class="choice-form" action="/choices" method="POST">
+	  <%= erb :"/surveys/_choice" %>
+	  <%= erb :"/surveys/_choice" %>
+	  <p class="append-choice-above"><input style="display: none;" type="submit" value="choice"></p>
+	</form>
+
+	<p><a class="append-choice" class="choice-input" href="/choices/new">Add Choice</a></p>
+</div>
 

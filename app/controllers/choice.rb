@@ -8,6 +8,10 @@ get '/choices/new' do
 end
 
 post '/choices' do
-  puts "~" * 80
-  p params.to_s
+  if request.xhr?
+    puts "value"
+    p params[:data]["0"][:value]
+    puts "question"
+    p params[:question]
+  end
 end
