@@ -26,12 +26,6 @@ get '/surveys' do
   end
 end
 
-get '/surveys/:id/questions/new' do
-  @survey = Survey.find_by(id: params[:id])
-  @question = Question.new
-  erb :'/questions/new'
-end
-
 post '/surveys/:id/questions' do
   survey = Survey.find_by(id: params[:id])
   question = survey.questions.new(content: params[:question])
@@ -48,12 +42,13 @@ post '/surveys/:id/questions' do
 end
 
 post '/surveys' do
-  survey = Survey.new(title: params[:survey][:title], user_id: session[:user_id])
-  if survey.save
-    redirect "/surveys/#{survey.id}/questions/new"
-  else
-    erb :"/surveys/new"
-  end
+  p params.to_s
+  # survey = Survey.new(title: params[:survey][:title], user_id: session[:user_id])
+  # if survey.save
+  #   redirect "/surveys/#{survey.id}/questions/new"
+  # else
+  #   erb :"/surveys/new"
+  # end
 end
 
 delete '/surveys/:id' do

@@ -88,3 +88,8 @@ td {
 fieldset {
   border: none;
 }
+
+.choice-input {
+  margin-left: 15px;
+}
+
