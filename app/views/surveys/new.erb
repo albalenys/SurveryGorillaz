@@ -4,8 +4,12 @@
   <p><input  style="display: none;" type="submit" value="survey"></p>
 </form>
 
-<%= erb :"/surveys/_question" %>
-<p><a class="append-selection" href="/questions/new" class="form-button">Add Question</a></p>
+<form class="question-form" action="/questions" method="POST">
+  <%= erb :"/surveys/_question" %>
+  <p class="append-question-above"><input style="display: none;" type="submit" value="question"></p>
+</form>
+
+<p><a class="append-question" href="/questions/new">Add Question</a></p>
 
 <form class="submit-all" action="/surveys" method="POST">
   <p><input type="submit" value="Save Survey"></p>

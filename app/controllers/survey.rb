@@ -42,14 +42,17 @@ post '/surveys/:id/questions' do
 end
 
 post '/surveys' do
-  p params.to_s
-  puts "*" * 80
-  # survey = Survey.new(title: params[:survey][:title], user_id: session[:user_id])
-  # if survey.save
-  #   redirect "/surveys/#{survey.id}/questions/new"
-  # else
-  #   erb :"/surveys/new"
-  # end
+  if request.xhr?
+    puts "value"
+    p params[:data]["0"][:value]
+  else
+    survey = Survey.new(title: params[:survey][:title], user_id: session[:user_id])
+    if survey.save
+      redirect "/surveys/#{survey.id}/questions/new"
+    else
+      erb :"/surveys/new"
+    end
+  end
 end
 
 delete '/surveys/:id' do

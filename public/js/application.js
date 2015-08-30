@@ -26,52 +26,79 @@ $(".header-link").on('click', function(e) {
   });
 });
 
-$(document).on('click', '.append-selection', function (e) {
+$(document).on('click', '.append-choice', function (e) {
   e.preventDefault();
   button = $(this)
-  var url = $(this).attr('href');
+  var url = button.attr('href');
+  container = button.parent().parent('.question-container');
   $.ajax({url: url, type:"GET" }).done(function(data) {
-    button.before(data);
+    container.children('.append-choice-above').before(data); 
+    container.children('.choice-form').children('.append-choice-above').before(data); 
   }).fail(function() {
     alert("failed to append");
   });
 });
 
-// $(document).on('click', '.survey-form-submit-button', function (e) {
-//   //$(".survey-form")
-//   debugger
-//   $(".question-form").each(function(i, question) {
-// debugger // check arguments - question.siblings('.choice-form');
-//     //var that = $(this);
-//     //$.post(that.attr('action'), that.serialize());
+$(document).on('click', '.append-question', function (e) {
+  e.preventDefault();
+  button = $(this)
+  var url = $(this).attr('href');
+  $.ajax({url: url, type:"GET" }).done(function(data) {
+    $(".append-question-above").before(data); 
+  }).fail(function() {
+    alert("failed to append");
+  });
+});
+
+// function post(postObj, i) {
+//   return $.ajax({
+//     method: "POST",
+//     url: postObj.attr('action'),
+//     data: { data: postObj.serializeArray(), question: i }
+//   })
+//   .fail(function() {
+//     alert("failed to post");
 //   });
+// };
+
+// $(document).on('submit', '.submit-all', function (e) {
+//   e.preventDefault();
+
+//   var questionPromises = [];
+//   $(".question-form").each(function(i) {
+//     var question = $(this);
+//     var choices = question.siblings('.choice-form');
+
+//     var choicePromises = [];
+//     choices.each(function() {
+//       var choice = $(this);
+//       choicePromises.push(post(choice, i));
+//     }); 
+//     // resolve choice promises
+//     $.when.apply($, choicePromises);
+
+//     questionPromises.push(post(question, i));
+//   }); 
+//   // resolve question promises
+//   $.when.apply($, questionPromises);
+
+//   var surveyPromise = post($(".survey-form"));
+//   // resolve survey promise
+//   $.when.surveyPromise;
+
 // });
 
-// //callback handler for form submit
-// $(".survey-form").submit(function(e)
-// {
-//     var postData = $(this).serializeArray();
-//     var formURL = $(this).attr("action");
-//     $.ajax(
-//     {
-//         url : formURL,
-//         type: "POST",
-//         data : postData,
-//         success:function(data, textStatus, jqXHR)
-//         {
-//             //data: return data from server
-//         },
-//         error: function(jqXHR, textStatus, errorThrown)
-//         {
-//             //if fails
-//         }
-//     });
-//     e.preventDefault(); //STOP default action
-//     e.unbind(); //unbind. to stop multiple form submit.
-// });
 
-// $(".survey-form").submit();
 
-// helpful - http://itquestionz.com/questions/2543751/ajax-submit-multiple-forms-via-jquery
+
+
+
+
+
+
+
+
+
+
 
 
