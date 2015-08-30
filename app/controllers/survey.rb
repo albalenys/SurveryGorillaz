@@ -48,6 +48,7 @@ post '/surveys/:id/questions' do
 end
 
 post '/surveys' do
+  redirect_home_unless_logged_in
   survey = Survey.new(title: params[:survey][:title], user_id: session[:user_id])
   if survey.save
     redirect "/surveys/#{survey.id}/questions/new"
