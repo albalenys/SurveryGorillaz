@@ -6,12 +6,10 @@ gem 'pg'
 # Sinatra driver
 gem 'sinatra'
 gem 'sinatra-contrib'
-
 gem 'activesupport', '~>4.2.0'
 gem 'activerecord', '~>4.2.0'
-
 gem 'rake'
-
+gem 'validates_email_format_of'
 gem 'shotgun'
 
 group :test do
