@@ -43,7 +43,8 @@ post '/users' do
     session[:user_id] = user.id
     redirect '/'
   else
-    "error"
+    flash[:sign_up_error] = user.errors.full_messages
+    redirect '/users/new'
   end
 end
 
