@@ -7,6 +7,6 @@ def current_user
 end
 
 def redirect_home_unless_logged_in
-  flash[:not_logged_in] = "You must be logged in to do that!"
+  flash[:not_logged_in] = "You must be logged in to do that!" unless logged_in?
   redirect '/' unless logged_in?
 end
