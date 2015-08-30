@@ -1,3 +1,9 @@
+get '/surveys/:id/questions/new' do
+  @survey = Survey.find_by(id: params[:id])
+  @question = Question.new
+  erb :'/questions/new'
+end
+
 get '/surveys/:id/edit' do
   @survey = Survey.find_by(id: params[:id])
   erb :"/surveys/edit"
@@ -26,12 +32,6 @@ get '/surveys' do
   end
 end
 
-get '/surveys/:id/questions/new' do
-  @survey = Survey.find_by(id: params[:id])
-  @question = Question.new
-  erb :'/questions/new'
-end
-
 post '/surveys/:id/questions' do
   survey = Survey.find_by(id: params[:id])
   question = survey.questions.new(content: params[:question])
@@ -49,11 +49,30 @@ end
 
 post '/surveys' do
   redirect_home_unless_logged_in
-  survey = Survey.new(title: params[:survey][:title], user_id: session[:user_id])
-  if survey.save
-    redirect "/surveys/#{survey.id}/questions/new"
+  if request.xhr?
+    @question_index = 0
+    params[:data].each_with_index do |obj, i|
+      @name = obj[1][:name]
+      @value = obj[1][:value]
+      if i == 0
+        @survey = Survey.new(title: @value, user_id: current_user.id)
+        @survey.save
+      elsif i > @question_index && @name == "question[content]"
+        @question = Question.new(content: @value, survey_id: @survey.id)
+        @question.save
+        @question_index = i
+      elsif i > @question_index && @name == "choice[content]"
+        @choice = Choice.new(content: @value, question_id: @question.id)
+        @choice.save
+      end
+    end
   else
-    erb :"/surveys/new"
+    survey = Survey.new(title: params[:survey][:title], user_id: session[:user_id])
+    if survey.save
+      redirect "/surveys/#{survey.id}/questions/new"
+    else
+      erb :"/surveys/new"
+    end
   end
 end
 

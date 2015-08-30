@@ -88,10 +88,21 @@ td {
 fieldset {
   border: none;
 }
+
 .center {
   margin: auto;
   text-align: center;
 }
+.choice-input {
+  margin-left: 15px;
+}
 hr {
   width: 50%;
 }
+
+
+.choice-input {
+  margin-left: 15px;
+}
+
+
