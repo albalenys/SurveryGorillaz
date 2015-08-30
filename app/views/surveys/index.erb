@@ -1,5 +1,3 @@
-<!-- needs a @surveys object -->
-
 <h1>List of Surveys</h1>
 
 <table class="surveys-table">
@@ -7,7 +5,7 @@
     <tr>
       <td><a href="/surveys/<%= survey.id %>"><%= survey.title %></a></td>
       <% if survey.user == current_user %>
-        <td><a href="/surveys/<%= survey.id %>/edit">Edit Button</a></td>
+        <td><a href="/surveys/<%= survey.id %>/edit">Edit</a></td>
         <td><%= erb :'/surveys/_delete', locals: { survey: survey } %></td>
       <% end %>
     </tr>
