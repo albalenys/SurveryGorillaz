@@ -1,4 +1,10 @@
 <h1>Sign Up</h1>
+<% if flash[:sign_up_error] %>
+  <div class="container"><% flash[:sign_up_error].each do |err| %>
+    <ul><li><%= err %></li></ul>
+    <% end %>
+  </div>
+<% end %>
 <form action="/users" method="POST">
   <table>
     <tr>
