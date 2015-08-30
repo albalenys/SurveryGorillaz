@@ -5,10 +5,16 @@
       <td><input type="text" name="user[first_name]" placeholder="first name"></td>
     </tr>
     <tr>
-      <td><input type="text" name="user[last_name]" placeholder="last name"></td>
+      <td><input type="text" name="user[last_name]" placeholder="last name (optional)"></td>
     </tr>
     <tr>
       <td><input type="text" name="user[img_src]" placeholder="avatar (optional)"></td>
+    </tr>
+    <tr>
+      <td><input type="text" name="user[city]" placeholder="city (optional)"></td>
+    </tr>
+    <tr>
+      <td><input type="text" name="user[country]" placeholder="country (optional)"></td>
     </tr>
     <%= erb :"users/_form" %>
   </table>

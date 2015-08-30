@@ -60,6 +60,8 @@ put '/users/:id' do
   current_user.update(img_src: params[:user][:img_src])
   current_user.update(first_name: params[:user][:first_name])
   current_user.update(last_name: params[:user][:last_name])
+  current_user.update(city: params[:user][:city])
+  current_user.update(country: params[:user][:country])
   current_user.update(email: params[:user][:email])
   current_user.update(password: params[:user][:password])
   if current_user.save

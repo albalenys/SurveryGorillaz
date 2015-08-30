@@ -1,10 +1,10 @@
+<h1 class="center"><%= @user.first_name%>'s Profile</h1>
 <% if current_user.id == @user.id %>
   <p class="center">
     <a href="/users/<%= current_user.id %>/edit">Edit Account</a><br>
-    <a href="#">Delete Account</a>
   </p>
+  <hr width="50%">
 <% end %>
-<hr width="50%">
 
 <table class="profile_tb">
   <td>
@@ -15,12 +15,30 @@
     <% end %>
   </td>
   <td>
-    <% if !(@user.first_name == "") %>
+    <% if @user.first_name != "" %>
       First Name: <%= @user.first_name %><br>
     <% end %>
-    <% if !(@user.last_name == "") %>
+    <% if @user.last_name != "" %>
       Last Name:  <%= @user.last_name %><br>
+    <% end %>
+    <% if @user.city != "" %>
+      City:  <%= @user.city %><br>
+    <% end %>
+    <% if @user.country != ""%>
+      Country:  <%= @user.country %><br>
     <% end %>
     Email:  <%= @user.email %><br>
   </td>
 </table>
+<hr width="50%">
+<h3 class="center">Current Surveys</h3>
+<% if @user.surveys.empty? %>
+  <p class="center">
+    You currently don't have any surveys!<br>
+    <a href="/surveys/new">Create one</a> to get user input.
+  </p>
+<% else %>
+  <% @user.surveys.each do |survey|%>
+    <p class="center"><a href="/surveys/<%= survey.id %>"><%= survey.title %></a></p>
+  <% end %>
+<% end %>
