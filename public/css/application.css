@@ -88,7 +88,6 @@ td {
 fieldset {
   border: none;
 }
-
 .center {
   margin: auto;
   text-align: center;
@@ -99,10 +98,19 @@ fieldset {
 hr {
   width: 50%;
 }
-
-
 .choice-input {
   margin-left: 15px;
 }
-
+.survey-form {
+  border: 1px solid black;
+  border-radius: 4px;
+  width:320px;
+  padding:20px;
+}
+.question-container {
+  border: 1px solid black;
+  border-radius: 4px;
+  width:240px;
+  padding:20px;
+}
 
