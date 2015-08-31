@@ -9,7 +9,7 @@ $(document).on('submit', ".delete-form", function (e) {
     .fail(function() {
       alert("failed to delete");
     });
-  };
+  }
 });
 
 $(document).on('click', ".header-link", function (e) {
@@ -56,7 +56,7 @@ $(document).on('submit', 'form.survey-form', function (e) {
   postURL = survey.attr('action')
   postData = survey.serializeArray();
 
-  $.ajax({
+  req1 = $.ajax({
     method: "POST",
     url: postURL,
     data: { data: postData }
@@ -65,7 +65,7 @@ $(document).on('submit', 'form.survey-form', function (e) {
     alert("failed to post");
   });
 
-  $.ajax('/surveys').done(function(data) {
+  req2 = $.ajax('/surveys').done(function(data) {
     $(".content").remove();
     var content = $(data).wrapAll("<section>");
     var section = content.parent().addClass("content");
@@ -74,6 +74,7 @@ $(document).on('submit', 'form.survey-form', function (e) {
     alert("failed to retrieve data");
   });
 
+//  $.when(req1, req2).done(function(e){ /*do the thing*/)})
 });
 
 

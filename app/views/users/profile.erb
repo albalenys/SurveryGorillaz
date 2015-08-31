@@ -1,5 +1,5 @@
 <h1 class="center"><%= @user.first_name%>'s Profile</h1>
-
+<!-- if you moved this to a partial and included it in layout it would be a global error div. -->
 <% if flash[:error] %>
   <p class="center" class="error-message"><%= flash[:error] %></p>
 <% end %>

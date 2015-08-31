@@ -4,6 +4,9 @@ By <%= @survey.user.first_name %>
 <form action="/surveys/<%= @survey.id %>/submit" method="POST">
   <input type="hidden" name="survey_id" value="<%= @survey.id %>">
   <ol>
+    <!-- This is very non performant.. O(n^2) --> 
+    <!-- Sometimes you can't help this, limit the amount of results
+         that might be returned by the queries  --> 
     <% @survey.questions.each do |question| %>
       <fieldset id="<%= question.id %>[choice_id]">
         <li>

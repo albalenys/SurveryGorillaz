@@ -34,12 +34,14 @@ end
 
 post '/surveys/:id/questions' do
   survey = Survey.find_by(id: params[:id])
+  #ZM: There has to be a way to dry this up! 
   question = survey.questions.new(content: params[:question])
-  choice1 = question.choices.new(content: params[:response1])
-  choice2 = question.choices.new(content: params[:response2])
-  choice3 = question.choices.new(content: params[:response3])
-  choice4 = question.choices.new(content: params[:response4])
-  if (question.save && choice1.save && choice2.save && choice3.save && choice4.save)
+
+  (1..4).each do |x|
+    question.choices.build( : params["response#{x}".to_sym] )
+  end
+   
+  if question.save
     redirect "/surveys/#{survey.id}/questions/new"
   else
     flash[:error] = @question.errors.full_messages.to_sentence
@@ -49,6 +51,8 @@ end
 
 post '/surveys' do
   redirect_home_unless_logged_in
+  #ZM: Remeber what we talked about in the room... See if you can't implement that
+  # Then come back to this method and refactor with a correctly nested data structure
   if request.xhr?
     @question_index = 0
     params[:data].each_with_index do |obj, i|

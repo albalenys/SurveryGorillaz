@@ -1,9 +1,6 @@
 get '/users/new' do
-  if request.xhr?
-    erb :"/users/signup", layout: false
-  else
-    erb :"/users/signup"
-  end
+  #ZM: this is a cleaned up version
+  erb :"/users/signup", layout: !request.xhr?
 end
 
 get '/users/login' do
@@ -64,6 +61,11 @@ get '/users/:id/edit' do
 end
 
 put '/users/:id' do
+  #ZM: Don't use current_user here, you are expecting only users/session[:user_id] to land on this page.
+  # what happens if I inject a put method in JS and send in a user id that does not exists?
+  #ZM: Get the user by the ID passed as params.
+
+  #ZM: user.update_attributes(params[:user]) 
   current_user.update(img_src: params[:user][:img_src])
   current_user.update(last_name: params[:user][:last_name])
   current_user.update(city: params[:user][:city])

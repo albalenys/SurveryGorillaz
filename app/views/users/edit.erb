@@ -6,6 +6,7 @@
 
 <form action="/users/<%= current_user.id %>" method="POST">
  <input name="_method" type="hidden" value="PUT">
+  <!-- start looking into using divs instead of tables --> 
   <table>
     <tr>
       <td><input type="text" name="user[img_src]" placeholder="Optional Avatar"></td>
