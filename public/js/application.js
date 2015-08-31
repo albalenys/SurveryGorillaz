@@ -1,4 +1,4 @@
-$(".delete-form").on("submit", function (e) {
+$(document).on('submit', ".delete-form", function (e) {
   e.preventDefault();
   if (confirm("Are you sure? This action is not reversible.")){
     url = $(this).attr('action');
@@ -12,7 +12,7 @@ $(".delete-form").on("submit", function (e) {
   };
 });
 
-$(".header-link").on('click', function(e) {
+$(document).on('click', ".header-link", function (e) {
   e.preventDefault();
   var $target = $(this)
   var url = $target.attr('href')
