@@ -1,8 +1,8 @@
 get '/' do
   @surveys = Survey.all
   if request.xhr?
-    erb :"/surveys/index", layout: false
+    erb :"/index", layout: false
   else
-    erb :"/surveys/index"
+    erb :"/index"
   end
 end
