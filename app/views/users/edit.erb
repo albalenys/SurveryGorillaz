@@ -1,4 +1,8 @@
 <h1>Edit Account</h1>
+<% if flash[:error]%>
+  <p class="error-message"><%=flash[:error]%></p>
+<% end %>
+
 <form action="/users/<%= current_user.id %>" method="POST">
  <input name="_method" type="hidden" value="PUT">
   <table>

@@ -54,30 +54,25 @@ delete '/users/:id' do
 end
 
 get '/users/:id/edit' do
-  if session[:user] == params[:id]
+  user = User.find_by(id: params[:id])
+  if session[:user_id] == user.id
     erb :"users/edit"
   else
-    flash[:error] = "You are not authorized to edit this profile. Make sure you are logged into your account."
+    flash[:error] = "You are not authorized to edit this profile. Make sure you are logged in."
     redirect "/users/#{params[:id]}"
   end
 end
 
 put '/users/:id' do
-  if session[:user] == params[:id]
-    current_user.update(img_src: params[:user][:img_src])
-    current_user.update(first_name: params[:user][:first_name])
-    current_user.update(last_name: params[:user][:last_name])
-    current_user.update(city: params[:user][:city])
-    current_user.update(country: params[:user][:country])
-    current_user.update(email: params[:user][:email])
-    current_user.update(password: params[:user][:password])
-    if current_user.save
-      redirect "/users/#{current_user.id}"
-    else
-      "Invalid input"
-    end
+  current_user.update(img_src: params[:user][:img_src])
+  current_user.update(last_name: params[:user][:last_name])
+  current_user.update(city: params[:user][:city])
+  current_user.update(country: params[:user][:country])
+
+  if current_user.update(first_name: params[:user][:first_name]) && current_user.update(email: params[:user][:email]) && current_user.update(password: params[:user][:password])
+    redirect "/users/#{current_user.id}"
   else
-    flash[:error] = "You are not authorized to edit this profile. Make sure you are logged into your account."
-    redirect "/users/#{params[:id]}"
+    flash[:error] = "You entered an invalid first name, email address, or password."
+    redirect "/users/#{params[:id]}/edit"
   end
 end
