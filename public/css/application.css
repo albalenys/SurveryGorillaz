@@ -1,8 +1,12 @@
 * {
   font-family: 'Anonymous Pro';
 }
-a {
+header a, nav a {
   color: black;
+  text-decoration: none;
+}
+a {
+  color: #999;
   text-decoration: none;
 }
 .spacer {
@@ -88,7 +92,6 @@ td {
 fieldset {
   border: none;
 }
-
 .center {
   margin: auto;
   text-align: center;
@@ -99,10 +102,13 @@ fieldset {
 hr {
   width: 50%;
 }
-
-
 .choice-input {
   margin-left: 15px;
 }
-
+.edit_button {
+  color: black;
+  padding: 2px;
+  -webkit-appearance: button;
+  cursor: pointer;
+}
 
