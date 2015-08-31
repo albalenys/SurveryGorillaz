@@ -1,9 +1,9 @@
 <h1>Log In</h1>
-<div class="errors">
-  <% if flash[:error]%>
-    <p class="error-message"><%=flash[:error]%></p>
-  <% end %>
-</div>
+
+<% if flash[:error]%>
+  <p class="error-message"><%=flash[:error]%></p>
+<% end %>
+
 <form action="/users/login" method="POST">
   <table>
     <%= erb :"users/_form" %>
