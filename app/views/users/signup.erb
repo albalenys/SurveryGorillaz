@@ -1,0 +1,29 @@
+<h1>Sign Up</h1>
+
+<% if flash[:sign_up_error] %>
+  <div class="container"><% flash[:sign_up_error].each do |err| %>
+    <ul><li><%= err %></li></ul>
+    <% end %>
+  </div>
+<% end %>
+
+<form action="/users" method="POST">
+  <table>
+    <tr>
+      <td><input type="text" name="user[first_name]" placeholder="first name"></td>
+    </tr>
+    <tr>
+      <td><input type="text" name="user[last_name]" placeholder="last name (optional)"></td>
+    </tr>
+    <tr>
+      <td><input type="text" name="user[img_src]" placeholder="avatar (optional)"></td>
+    </tr>
+    <tr>
+      <td><input type="text" name="user[city]" placeholder="city (optional)"></td>
+    </tr>
+    <tr>
+      <td><input type="text" name="user[country]" placeholder="country (optional)"></td>
+    </tr>
+    <%= erb :"users/_form" %>
+  </table>
+</form>

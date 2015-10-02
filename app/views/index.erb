@@ -1,0 +1,8 @@
+<h1>Welcome!</h1>
+
+<p>
+  Here you will find a list of all our available surveys.<br>
+  Make sure you <a href="/users/new">sign up</a> if you would like to create any surveys.
+</p>
+
+<%= erb :"/surveys/_list", locals: {surveys: @surveys} %>

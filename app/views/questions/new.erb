@@ -1,0 +1,24 @@
+<div class="container">
+  <h1>Please create a new question for your <%=@survey.title%></h1>
+  <form action="/surveys/<%=@survey.id%>/questions" method="POST">
+    <div>
+       <textarea rows="4" cols="40" name="question" placeholder="Write your question here"></textarea>
+    </div>
+      <hr>
+      <textarea rows="4" cols="40" name="response1" placeholder="Response"></textarea>
+      <div class="spacer"></div>
+      <textarea rows="4" cols="40" name="response2" placeholder="Response"></textarea>
+      <div class="spacer"></div>
+      <textarea rows="4" cols="40" name="response3" placeholder="Response"></textarea>
+      <div class="spacer"></div>
+      <textarea rows="4" cols="40" name="response4" placeholder="Response"></textarea>
+      <div class="spacer"></div>
+    <div>
+      <input type="submit" value="Submit Question">
+    </div>
+  </form>
+  <form action="/surveys" method="get">
+    <input type="submit" value="Save Survey">
+  </form>
+</div>
+

@@ -1,0 +1,20 @@
+<h1>Results</h1>
+
+<p>
+  Thanks for your submission to the <%= @survey.title %> survey!<br>
+  Here are the current results for this survey.<br>
+  Return to the <a href="/">main page</a> to take another survey.
+</p>
+
+<ol>
+  <% @survey.questions.each do |question| %>
+    <li>
+      <p><%= question.content %></p>
+      <ul>
+        <% question.choices.each do |choice| %>
+          <li><%= choice.content %> (<%=choice.question_responses.count %> votes)</li>
+        <% end %>
+      </ul>
+    </li>
+  <% end %>
+</ol>

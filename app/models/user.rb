@@ -4,8 +4,7 @@ class User < ActiveRecord::Base
   has_many :surveys
   has_many :question_responses
 
-  validates_the_presence_of :password_digest, :email
-  validates_the_uniqueness_of :email
-
-  # add kelly's cool email validation
+  validates_presence_of :password_digest, :email, :first_name
+  validates_uniqueness_of :email
+  validates :email, email_format: { message: "This is an invalid email address." }
 end

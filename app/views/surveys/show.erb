@@ -1,0 +1,19 @@
+<h1 class="survey_title"><%= @survey.title %></h1><br>
+By <%= @survey.user.first_name %>
+
+<form action="/surveys/<%= @survey.id %>/submit" method="POST">
+  <input type="hidden" name="survey_id" value="<%= @survey.id %>">
+  <ol>
+    <% @survey.questions.each do |question| %>
+      <fieldset id="<%= question.id %>[choice_id]">
+        <li>
+          <p><%= question.content %></p>
+          <% question.choices.each do |choice| %>
+            <input type="radio" name="<%= question.id %>[choice_id]" value="<%= choice.id %>"><%= choice.content %><br>
+          <% end %>
+        </li>
+      </fieldset>
+    <% end %>
+  </ol>
+  <input type="submit" value="Submit">
+</form>

@@ -1,0 +1,27 @@
+<h1>Edit Account</h1>
+
+<% if flash[:error]%>
+  <p class="error-message"><%=flash[:error]%></p>
+<% end %>
+
+<form action="/users/<%= current_user.id %>" method="POST">
+ <input name="_method" type="hidden" value="PUT">
+  <table>
+    <tr>
+      <td><input type="text" name="user[img_src]" placeholder="Optional Avatar"></td>
+    </tr>
+    <tr>
+      <td><input type="text" name="user[first_name]" placeholder="First Name"></td>
+    </tr>
+    <tr>
+      <td><input type="text" name="user[last_name]" placeholder="Last Name"></td>
+    </tr>
+    <tr>
+      <td><input type="text" name="user[city]" placeholder="city (optional)"></td>
+    </tr>
+    <tr>
+      <td><input type="text" name="user[country]" placeholder="country (optional)"></td>
+    </tr>
+    <%= erb :"/users/_form" %>
+  </table>
+</form

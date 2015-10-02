@@ -1,0 +1,15 @@
+<% if flash[:not_logged_in] %>
+  <div class="error_container"><h2><%= flash[:not_logged_in] %></h2></div>
+<%end %>
+
+<table class="surveys-table">
+  <% @surveys.each do |survey| %>
+    <tr>
+      <td><a href="/surveys/<%= survey.id %>"><%= survey.title %></a></td>
+      <% if survey.user == current_user %>
+        <td><a href="/surveys/<%= survey.id %>/edit">Edit</a></td>
+        <td><%= erb :'/surveys/_delete', locals: { survey: survey } %></td>
+      <% end %>
+    </tr>
+  <% end %>
+</table>

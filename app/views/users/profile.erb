@@ -1,0 +1,44 @@
+<h1 class="center"><%= @user.first_name%>'s Profile</h1>
+
+<% if flash[:error] %>
+  <p class="center" class="error-message"><%= flash[:error] %></p>
+<% end %>
+<% if session[:user_id] == @user.id %>
+  <p class="center">
+    <a href="/users/<%= session[:user_id] %>/edit">Edit Account</a><br>
+  </p>
+  <hr>
+<% end %>
+
+<table class="profile_tb">
+  <td>
+    <% if @user.img_src == "" || @user.img_src == nil %>
+      <img class="profile_icon" src="https://cdn1.iconfinder.com/data/icons/ninja-things-1/1772/ninja-simple-512.png">
+    <% else %>
+      <img class="profile_icon" src="<%= @user.img_src %>">
+    <% end %>
+  </td>
+  <td>
+    Name: <%= @user.first_name %> <%= @user.last_name %><br>
+    <% if @user.city && @user.city != "" %>
+      City: <%= @user.city %><br>
+    <% end %>
+    <% if @user.country && @user.country != "" %>
+      Country: <%= @user.country %><br>
+    <% end %>
+    Email: <%= @user.email %><br>
+  </td>
+</table>
+
+<hr>
+<h3 class="center">Current Surveys</h3><br>
+<% if @user.surveys.empty? %>
+  <p class="center">
+    You currently don't have any surveys!<br>
+    <a href="/surveys/new">Create one</a> to get user input.
+  </p>
+<% else %>
+  <% @user.surveys.each do |survey|%>
+    <p class="center"><a href="/surveys/<%= survey.id %>"><%= survey.title %></a></p>
+  <% end %>
+<% end %>
