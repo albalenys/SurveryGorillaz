@@ -1,6 +1,6 @@
 SurveyMonkey clone that utilizes Sinatra and Javascript.
 
-Contributers: <a href="https://github.com/kripple" target="_blank">Kelly Ripple</a>, <a href="https://github.com/trallen91" target="_blank">Travis Allen</a>, and <a href="https://github.com/markmiller21" target="_blank">Mark Miller</a>.
+Contributers: <a href="https://github.com/albalenys" target="_blank">Abby De Los Santos</a>, <a href="https://github.com/kripple" target="_blank">Kelly Ripple</a>, <a href="https://github.com/trallen91" target="_blank">Travis Allen</a>, and <a href="https://github.com/markmiller21" target="_blank">Mark Miller</a>.
 
 ### Contributing
 
