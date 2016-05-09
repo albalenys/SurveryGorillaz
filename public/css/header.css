@@ -1,0 +1,33 @@
+header a, nav a {
+  color: #000;
+}
+
+header {
+  height: 90px;
+  background-color: #4FD6DB;
+  box-shadow: 2px 2px 5px black;
+  padding: 0 1em;
+}
+
+header ul {
+  margin: 0;
+  display: inline;
+}
+
+header li {
+  list-style: none;
+  display: inline;
+  vertical-align: middle;
+  padding-right: 20px;
+  line-height: 90px;
+}
+
+#site-title {
+  font-family: 'Rock Salt', cursive;
+  font-size: 36px;
+  color: #FFF;
+}
+
+#site-title:hover {
+  text-shadow: 2px 2px 5px black;
+}

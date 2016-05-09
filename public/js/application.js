@@ -12,7 +12,7 @@ $(document).on('submit', ".delete-form", function (e) {
   };
 });
 
-$(document).on('click', ".header-link", function (e) {
+$(document).on('click', "header a", function (e) {
   e.preventDefault();
   var $target = $(this)
   var url = $target.attr('href')

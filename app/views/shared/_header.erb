@@ -1,18 +1,22 @@
-<header class="header">
-  <ul class="float-left">
-    <li><a id="site-title" class="header-link" href="/">Survey Gorillaz</a></li>
-  </ul>
+<header>
+  <a id="site-title" href="/">Survey Gorillaz</a>
+  
   <ul class="float-right">
-    <li><a class="header-link" href="/surveys/new">Create A Survey</a></li>
+    <li><a href="/surveys/new">Create A Survey</a></li>
     <li>|</li>
     <% if logged_in? %>
-      <li><a class="header-link" href="/users/<%= current_user.id %>">Profile</a></li>
+      <li><a href="/users/<%= current_user.id %>">Profile</a></li>
       <li>|</li>
-      <li><%= erb :"/users/_delete", locals: { user: current_user } %></li>
+      <li>
+        <form class="logout-form" action="/users/<%= current_user.id %>" method="POST">
+          <input type="hidden" name="_method" value="DELETE" />
+          <input class="logout-button" type="submit" value="Logout">
+        </form>
+      </li>
     <% else %>
-      <li><a class="header-link" href="/users/login">Login</a></li>
+      <li><a href="/users/login">Login</a></li>
       <li>|</li>
-      <li><a class="header-link" href="/users/new">Signup</a></li>
+      <li><a href="/users/new">Signup</a></li>
     <% end %>
   </ul>
 </header>
