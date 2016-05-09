@@ -1,0 +1,22 @@
+<header>
+  <a id="site-title" href="/">Survey Gorillaz</a>
+  
+  <ul class="float-right">
+    <li><a href="/surveys/new">Create A Survey</a></li>
+    <li>|</li>
+    <% if logged_in? %>
+      <li><a href="/users/<%= current_user.id %>">Profile</a></li>
+      <li>|</li>
+      <li>
+        <form class="logout-form" action="/users/<%= current_user.id %>" method="POST">
+          <input type="hidden" name="_method" value="DELETE" />
+          <input class="logout-button" type="submit" value="Logout">
+        </form>
+      </li>
+    <% else %>
+      <li><a href="/users/login">Login</a></li>
+      <li>|</li>
+      <li><a href="/users/new">Signup</a></li>
+    <% end %>
+  </ul>
+</header>

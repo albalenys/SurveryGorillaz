@@ -3,6 +3,7 @@
 <head>
   <link rel="stylesheet" href="/css/normalize.css">
   <link rel="stylesheet" href="/css/application.css">
+  <link rel="stylesheet" href="/css/header.css">
   <link href='https://fonts.googleapis.com/css?family=Rock+Salt|Anonymous+Pro' rel='stylesheet' type='text/css'>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
   <script src="/js/application.js"></script>
@@ -10,25 +11,7 @@
 </head>
 
 <body>
-  <header class="header">
-    <ul class="float-left">
-      <li><a id="site-title" class="header-link" href="/">Survey Gorillaz</a></li>
-    </ul>
-    <ul class="float-right">
-      <li><a class="header-link" href="/surveys/new">Create A Survey</a></li>
-      <li>|</li>
-      <% if logged_in? %>
-        <li><a class="header-link" href="/users/<%= current_user.id %>">Profile</a></li>
-        <li>|</li>
-        <li><%= erb :"/users/_delete", locals: { user: current_user } %></li>
-      <% else %>
-        <li><a class="header-link" href="/users/login">Login</a></li>
-        <li>|</li>
-        <li><a class="header-link" href="/users/new">Signup</a></li>
-      <% end %>
-    </ul>
-  </header>
-
+  <%= erb :"/shared/_header" %>
   <section class="content">
     <%= yield %>
   </section>
